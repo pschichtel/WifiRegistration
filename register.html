@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register!</title>
+        <meta charset="UTF-8">
+        <style>
+            html, body {
+                padding: 0;
+                margin: 0;
+                font-family: Verdana, Arial, sans-serif;
+            }
+
+            body > div {
+                margin: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form method="POST" action="/register">
+                <fieldset>
+                    <legend>Enter username and password</legend>
+                    <div>
+                        <label for="username">Username:
+                            <input id="username" name="username" type="text" placeholder="Username here">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="password">Password:
+                            <input id="password" name="password" type="password" placeholder="Password here">
+                        </label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Register!">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
