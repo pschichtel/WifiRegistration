@@ -41,14 +41,14 @@ func handleRegisterPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 			var random []byte
 			rand.Read(random)
 			hashed, err := crypt.Crypt(password, "$6$" + GenerateString(16) + "$")
-			if (err != nil) {
+			if err != nil {
 				http.Error(w, "Crypt: " + err.Error(), http.StatusInternalServerError)
-				return;
+				return
 			}
 			_, err = db.Exec("INSERT INTO accounts (username, password) VALUES (?, ?)", username, hashed)
-			if (err != nil) {
+			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return;
+				return
 			}
 			fmt.Fprintf(w, "Successfully registered %s!", username + ":" + hashed)
 
@@ -56,7 +56,7 @@ func handleRegisterPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 	} else {
 		content, err := ioutil.ReadFile("register.html");
-		if (err != nil) {
+		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		} else {
 			fmt.Fprintf(w, "%s", content)
@@ -87,7 +87,7 @@ func main() {
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 
 	db, err := sql.Open(driver, dbPath)
-	if (err != nil) {
+	if err != nil {
 		fmt.Println("Failed to connect to the database!")
 		fmt.Println(err.Error())
 		os.Exit(1)
