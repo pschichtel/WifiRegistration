@@ -179,7 +179,7 @@ func main() {
 	flag.StringVar(&dsn, "dsn", "accounts.db", "Provides the database dsn")
 	flag.IntVar(&listenPort, "listen-port", 80, "Provides the listening port")
 	flag.StringVar(&listenAddr, "listen-address", "0.0.0.0", "Provides the listening address")
-	flag.StringVar(&password, "password", "sicher", "Provides")
+	flag.StringVar(&password, "password", "sicher", "Provides the application password")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
 		flag.PrintDefaults()
