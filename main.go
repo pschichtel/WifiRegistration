@@ -210,11 +210,12 @@ func main() {
 
 	var withAuth = authenticationWrapper(password)
 
-	http.HandleFunc("/", withLog(handleIndex(password)))
-	http.HandleFunc("/login", withLog(handleLoginPage(password)))
-	http.HandleFunc("/register", withAuth(withLog(withDB(handleRegisterPage, db))))
-	http.HandleFunc("/list", withAuth(withLog(withDB(handleListPage, db))))
-	http.HandleFunc("/delete", withAuth(withLog(withDB(handleDeletePage, db))))
+	http.HandleFunc("/",		withLog(handleIndex(password)))
+	http.HandleFunc("/login",	withLog(handleLoginPage(password)))
+	http.HandleFunc("/register",	withAuth(withLog(withDB(handleRegisterPage, db))))
+	http.HandleFunc("/list",		withAuth(withLog(withDB(handleListPage, db))))
+	http.HandleFunc("/delete",	withAuth(withLog(withDB(handleDeletePage, db))))
+
 	var listenErr = http.ListenAndServe(listenOn, nil)
 	if listenErr != nil {
 		fmt.Println(sqlErr.Error())
