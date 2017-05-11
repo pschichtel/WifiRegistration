@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authenticate!</title>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Arial, sans-serif;
+        }
+
+        body > div {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form method="POST" action="/login">
+        <fieldset>
+            <legend>Enter username and password</legend>
+            <div>
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password">
+            </div>
+            <div>
+                <input type="submit" value="Authenticate!">
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
