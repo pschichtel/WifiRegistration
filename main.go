@@ -54,7 +54,11 @@ func handleRegisterPage(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 				http.Error(w, "Crypt: " + err.Error(), http.StatusInternalServerError)
 				return
 			}
-			_, err = db.Exec("INSERT INTO radcheck (username, attribute, op, value) VALUES (?, 'Crypt-Password', ':=', ?)", username, hashed)
+			var attr = "Password-With-Header"
+			var op = ":="
+			var passwordHeader = "{Crypt}"
+			var value = passwordHeader + hashed
+			_, err = db.Exec("INSERT INTO radcheck (username, attribute, op, value) VALUES (?, ?, ?, ?)", username, attr, op, value)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
