@@ -212,9 +212,9 @@ func main() {
 
 	http.HandleFunc("/",		withLog(handleIndex(password)))
 	http.HandleFunc("/login",	withLog(handleLoginPage(password)))
-	http.HandleFunc("/register",	withAuth(withLog(withDB(handleRegisterPage, db))))
-	http.HandleFunc("/list",		withAuth(withLog(withDB(handleListPage, db))))
-	http.HandleFunc("/delete",	withAuth(withLog(withDB(handleDeletePage, db))))
+	http.HandleFunc("/register",	withLog(withAuth(withDB(handleRegisterPage, db))))
+	http.HandleFunc("/list",		withLog(withAuth(withDB(handleListPage, db))))
+	http.HandleFunc("/delete",	withLog(withAuth(withDB(handleDeletePage, db))))
 
 	var listenErr = http.ListenAndServe(listenOn, nil)
 	if listenErr != nil {
