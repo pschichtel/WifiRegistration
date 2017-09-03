@@ -222,7 +222,7 @@ func main() {
 
 	var listenErr = http.ListenAndServe(listenOn, nil)
 	if listenErr != nil {
-		fmt.Println(sqlErr.Error())
+		fmt.Println(listenErr.Error())
 		os.Exit(1)
 	}
 }

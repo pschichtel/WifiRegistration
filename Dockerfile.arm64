@@ -8,4 +8,10 @@ RUN go build
 FROM arm64v8/debian
 RUN mkdir /app
 COPY --from=build /go/src/WifiRegistration/WifiRegistration /app/registration
-ENTRYPOINT /app/registration
+COPY *.html /app/
+RUN useradd -M -d /app app && \
+    chown -R app:app /app
+USER app
+WORKDIR /app
+EXPOSE 3000
+ENTRYPOINT ["/app/registration", "--listen-port", "3000"]
